@@ -1,3 +1,3 @@
-output "web" {
-  value = "${aws_instance.ec2_web.id}"
+output "asg" {
+  value = "${aws_autoscaling_group.my_asg.id}"
 }
