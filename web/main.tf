@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "engieit-noprod-agora-terraform"
+    bucket = "my-beautifull-bucket"
     key    = "web/web1.tfstate"
     region = "eu-west-1"
   }
@@ -10,7 +10,7 @@ data "terraform_remote_state" "vpc" {
   backend = "s3"
 
   config {
-    bucket = "engieit-noprod-agora-terraform"
+    bucket = "my-beautifull-bucket"
     key    = "vpc/vpc.tfstate"
     region = "eu-west-1"
   }
