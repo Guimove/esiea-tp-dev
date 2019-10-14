@@ -1,10 +1,16 @@
-#TODO Terraform remote state
+terraform {
+  backend "s3" {
+    bucket = "engieit-noprod-agora-terraform"
+    key    = "vpc/vpc.tfstate"
+    region = "eu-west-1"
+  }
+}
 
 resource "aws_vpc" "my_vpc" {
   cidr_block = "${var.vpc_cidr}"
 
   tags {
-    Name = "my_vpc"
+    Name  = "my_vpc"
     Group = "my_infra"
   }
 }
@@ -16,7 +22,7 @@ resource "aws_subnet" "my_subnet" {
   cidr_block              = "${var.aza_cidr}"
 
   tags {
-    Name = "my_subnet"
+    Name  = "my_subnet"
     Group = "my_infra"
   }
 }
@@ -25,7 +31,7 @@ resource "aws_internet_gateway" "my_gw" {
   vpc_id = "${aws_vpc.my_vpc.id}"
 
   tags {
-    Name = "my_gateway"
+    Name  = "my_gateway"
     Group = "my_infra"
   }
 }
@@ -39,7 +45,7 @@ resource "aws_route_table" "my_route_table" {
   }
 
   tags {
-    Name = "my_route_table"
+    Name  = "my_route_table"
     Group = "my_infra"
   }
 }
